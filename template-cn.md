@@ -4,7 +4,7 @@
 > <span class="icon">&#xe7ca;</span> `619951393@qq.com`&emsp;&emsp;
 > <span class="icon">&#xe600;</span> [jerrysheen](https://github.com/jerrysheen)
 
-<img class="avatar" src="https://avatars.githubusercontent.com/u/583231?v=4">
+<img class="avatar" src="./cvpic.png">
 
 ## &#xe618; 工作经验
 
@@ -14,61 +14,84 @@
 </div>
 
 作为中台引擎程序，负责项目组的渲染表现开发，美术规范制定，以及性能优化工作。
-<h4>效果表现开发</h4>
 
-参考市面竞品游戏方案，参与开发多个SLG渲染方案，保证表现效果以及性能均衡。
-- SLG 阴影方案
-- SLG 地形方案
+<div class="entry-title"  style="margin-top: 10px;">
+   <h3>效果表现开发</h3>
+</div>
+
+参考市面竞品游戏方案，参与多个SLG渲染方案开发，保证表现效果以及性能均衡。
+- SLG 阴影方案 :
+     实时阴影方案，优化阴影精度，支持Shadow Cache。Occlusion Shadow方案，只用R8来表达阴影遮蔽。平面阴影方案。
+- SLG 地形方案 ：参考重返帝国内城的九层地表混合方案，只需采样三张Albedo完成混合，并制作美术工具链，美术在原生Terrain上修改美术表现后可一键导出。
 - SLG GPU Animation动画驱动方案
-- SLG 3D角色渲染方案
-- SLG 山、水体、湖泊、树木、迷雾渲染方案
-- SLG UI飘字头顶血条方案
+- SLG 3D角色渲染方案：配合TA制作头发，皮肤渲染方案。
+- SLG 山、水体、湖泊、树木、迷雾渲染方案。
+<div class="entry-title"  style="margin-top: 10px;">
+    <h3>性能优化以及管线优化</h3>
+</div>
 
-<h4>性能优化以及管线优化</h4>
 
-- GPU渲染优化
-通过unity性能工具，framedebug， renderdoc， gears来进行各种分析、提升帧率，优化发热以及耗电。
-    1. 优化drawcall
-    2. 显存优化
-    3. shader优化，减少计算复杂度
-    4. 优化RT格式，去掉渲染流程中冗余的pass以及rt，通过降低分辨率减少带宽和计算量消耗。
-    5. LOD优化，减少小三角形的剔除，优化带宽以及运行时vs消耗。
-- 内存优化
-    1. 优化Unity Shader变体，减少shader内存以及shader warmup的内存。
+通过unity性能工具，framedebugger， renderdoc， gears来进行各种分析、提升帧率，优化发热以及耗电。
+
+<div style="margin-top: 5px;">
+
+- 渲染优化</br>
+    1. Drawcall优化：SRP Batch合批优化，大量物体进行GPU Instancing绘制，阴影Drawcall优化。
+    2. 带宽优化：利用性能工具定位带宽具体消耗原因，并针对不同阶段，不同硬件单元产生的带宽问题进行优化。
+    3. Shader优化：Shader计算复杂度，贴图采样数优化，真机异常排查，变体数量优化，分支优化，针对不同机型配置不同的LOD。
+    4. Renderpass优化：去掉渲染流程中冗余的pass，优化RT格式
+    5. LOD优化：在远距离视角下用高LOD，减少带宽消耗，减少小三角形渲染。
+    6. 粒子系统优化：针对低端机减少粒子发射数，调整渲染层级优化合批。
+    7. 资源优化：监测材质球变体开关是否合理，规范贴图压缩格式和mip格式是否开启读写，规范mesh压缩格式，是否有不合理的通道。
+    8. 针对不同机型设置不同的机型分类，区分Shader LOD，RenderScale，粒子表现，RT size，是否启用RenderFeature。
 - Unity渲染管线优化:
-    1. 支持RenderScale不影响UI层
+    1. 支持RenderScale不影响UI层。
+    2. 管线内置Bloom高光闪烁优化。
+    3. 根据项目需求合理开关管线配置，避免配置错误带来的性能影响。
 - CPU端优化（较为薄弱）
-    1. 进组支持项目组工作，负责割草场景中的低端机性能优化
-    对大量物体进行预生成和池化
-    减少子弹检测逻辑，用BFS和简化碰撞检测。
-    通过规范代码，减少运行时GC产生。
+    1. 内存优化以及GC优化
 
-<h4>美术规范制定</h4>
-这个地方其实可以写的是我Owner了这个项目的性能优化，比如针对这个项目我做了什么优化呢？直接来一个实战举例。
-- 基于项目开发周期及主力机型，制定渲染方案:
-针对公司开发产品很紧急的周期与美术共同定制了渲染方案，渲染流程，避免在开发中期产生的性能问题和调优。
-    1.针对公司海外SLG产品，制定效果Shader，尽量减少开发过程中的GPU瓶颈，使得高中低端机型都能流畅渲染。
-    2.制定高中低端机型渲染分级，表现优化。
-    
-- 明确项目内各种资源标准，注意事项。
-    1. 明确各种性能指标，并负责日常指标检测，针对项目中因为版本迭代产生的渲染问题，进行及时的跟进调优。
-    2. 与美术负责
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br><br>
 
 ## &#xe635; 项目经历
+<div class="entry-title"  style="margin-top: 15px;">
+    <h3>公司项目《Age of Sea》</h3>
+</div>
 
-<div class="entry-title">
+深度参与项目开发、针对面向国家主力机型进行渲染方案定制、性能调优分级，为项目上线保驾护航。
+<br> 
+成果：项目上线时，在低端机型(Mali-G72)fps为30帧，极端性能场景20帧+；超低端机型(PowerVR-GE8320)20帧+，极端性能场景15帧+。
+
+<div style="margin-top: 5px;">
+
+1. 针对T3国家低端机设置一套轻量级的Shader以及渲染流程，减轻项目在开发中产生渲染瓶颈的可能性。
+2. 针对割草场景提供GPU Animation支持，并在项目后段参与割草场景性能优化，帮助项目组优化客户端逻辑，减少卡顿问题。
+3. 定期对项目进行GPU性能分析，资源合规分析。优化Shader变体问题、渲染合批问题。
+4. 提供项目组效果表现支持，卡通海水Shader，湖水stencil挖坑方案，昼夜切换shader。
+</div>
+
+
+
+<div class="entry-title" style="margin-top: 15px;">
     <h3>ShanEngine</h3>
     <a href="https://github.com/jerrysheen/ShanEngine">github.com/jerrysheen/ShanEngine</a>
 </div>
+
 C++17 | DirectX 12 | OpenGL | PBR  | 现代渲染管线
 
 <div style="margin-top: 5px;">
 
-- 渲染架构设计 ：RenderAPI→RHI→Graphics→Renderer→Scene
-- 完整前向渲染 ：CameraRenderer、RenderFeature模块化系统、Frustum Culling和渲染队列管理，支持多相机多渲染目标
-- 资源管理系统 ：包含MaterialLibrary智能缓存、ShaderLibrary、.meta文件序列化和Assimp集成
+- 渲染架构设计 ：RenderAPI→RHI→Graphics→Renderer→Scene。
+- 资源管理系统 ：包含MaterialLibrary智能缓存、ShaderLibrary、.meta文件序列化和Assimp集成、压缩贴图加载。
 - PBR渲染系统 ：
-- 支持windows平台下一键部署： 使用premake5支持一键部署和编译
+- 支持windows平台下一键部署： 使用premake5支持一键部署和编译。
 </div>
 
 ## &#xe80c; 教育经历
@@ -85,8 +108,8 @@ C++17 | DirectX 12 | OpenGL | PBR  | 现代渲染管线
 
 
 ## &#xecfa; 专业技能
-- 熟悉移动端GPU渲染管线，明确各个阶段可能会造成的性能瓶颈以及修复手段。基本明确手机端gpu硬件架构。
-- 各种Unity性能渲染工具使用、RenderDoc， Frame Debugger， Memory Profiler, AssetStudio，远程调试工具，
-- 熟练掌握C#和C++开发
+- 熟悉移动端GPU渲染管线，了解各个阶段可能会造成的性能瓶颈以及修复手段。熟悉手机端mali低端机gpu硬件架构。
+- 各种Unity性能渲染工具使用、RenderDoc， Frame Debugger， Memory Profiler, AssetStudio，Arm Streamline profiler, UWA Gears。
+- 熟练掌握URP Shader开发，日常工作中可使用C#开发。
+- 熟悉opengl，正在学习D3D12，能够用C++实现demo中的小功能。
 - 熟练使用AI代码工具辅助代码开发，进行代码优化、架构调整、代码辅助阅读
-- 熟悉美术工作开发流，以及项目组工作流
